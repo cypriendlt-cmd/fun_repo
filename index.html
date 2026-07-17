@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffd6e0" />
+  <meta name="description" content="Choisis notre prochaine activité surprise !" />
+  <title>Mission : choisir notre prochaine aventure ❤️</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Éléments flottants d'ambiance (cœurs, étoiles...) -->
+  <div class="floating-bg" aria-hidden="true"></div>
+
+  <!-- ================== SECTION 1 : ACCUEIL ================== -->
+  <section id="welcome" class="screen welcome-screen" aria-labelledby="welcome-title">
+    <div class="welcome-inner">
+      <div class="sparkle" aria-hidden="true">✨</div>
+      <h1 id="welcome-title" class="title">
+        Aujourd’hui, une lourde responsabilité repose sur tes épaules…
+      </h1>
+      <p class="subtitle">
+        Tu vas devoir choisir parmi des activités absolument incroyables,
+        soigneusement sélectionnées par le Chef en personne,
+        <em>à savoir moi</em>.
+      </p>
+      <button id="start-btn" class="btn btn-primary btn-lg" type="button">
+        Je suis prête à prendre cette décision capitale
+        <span aria-hidden="true">💖</span>
+      </button>
+      <p class="mini-hint">Attention : chaque choix aura un impact historique.</p>
+    </div>
+  </section>
+
+  <!-- ================== SECTION 2 : ACTIVITÉS ================== -->
+  <section id="activities-section" class="screen section-block hidden" aria-labelledby="activities-title">
+    <header class="section-header">
+      <h2 id="activities-title" class="section-title">Les candidates officielles</h2>
+      <p class="section-sub">
+        Appuie sur une carte pour l’ajouter à ton podium. Il te faut un top 3.
+      </p>
+    </header>
+
+    <!-- Cartes générées dynamiquement par JS -->
+    <div id="activities-grid" class="activities-grid" role="list"></div>
+
+    <!-- Classement / podium -->
+    <div class="podium" aria-labelledby="podium-title">
+      <h3 id="podium-title" class="podium-title">Ton podium officiel</h3>
+      <ol class="podium-list">
+        <li class="podium-slot" data-rank="1">
+          <span class="medal" aria-hidden="true">🥇</span>
+          <div class="podium-content">
+            <span class="podium-label">Médaille d’or</span>
+            <span class="podium-value" data-slot="1">Aucun choix pour l’instant</span>
+          </div>
+          <button class="btn-mini btn-remove" data-remove="1" type="button" aria-label="Retirer la médaille d'or" hidden>Retirer</button>
+        </li>
+        <li class="podium-slot" data-rank="2">
+          <span class="medal" aria-hidden="true">🥈</span>
+          <div class="podium-content">
+            <span class="podium-label">Médaille d’argent</span>
+            <span class="podium-value" data-slot="2">Aucun choix pour l’instant</span>
+          </div>
+          <button class="btn-mini btn-remove" data-remove="2" type="button" aria-label="Retirer la médaille d'argent" hidden>Retirer</button>
+        </li>
+        <li class="podium-slot" data-rank="3">
+          <span class="medal" aria-hidden="true">🥉</span>
+          <div class="podium-content">
+            <span class="podium-label">Médaille de bronze</span>
+            <span class="podium-value" data-slot="3">Aucun choix pour l’instant</span>
+          </div>
+          <button class="btn-mini btn-remove" data-remove="3" type="button" aria-label="Retirer la médaille de bronze" hidden>Retirer</button>
+        </li>
+      </ol>
+      <p id="podium-comment" class="podium-comment" hidden>
+        Le Chef valide officiellement ce classement. Même si certains choix risquent de provoquer des débats en cuisine. 😌
+      </p>
+    </div>
+
+    <!-- ================== SECTION FILM (conditionnelle) ================== -->
+    <div id="movie-section" class="movie-section" hidden aria-labelledby="movie-title">
+      <h3 id="movie-title" class="section-title small">
+        Puisqu’on risque de finir au cinéma… autant choisir quelque chose qui te donne vraiment envie ! 🎬
+      </h3>
+      <p class="section-sub">Quel type de film aimerais-tu voir ?</p>
+      <div id="movie-grid" class="movie-grid" role="radiogroup" aria-label="Genre de film"></div>
+    </div>
+
+    <!-- ================== RESTAURANT ================== -->
+    <div class="restaurant-block" aria-labelledby="resto-title">
+      <h3 id="resto-title" class="section-title small">
+        Et pour terminer cette aventure en beauté… on ajoute un restaurant le soir ?
+      </h3>
+      <div class="restaurant-options" role="radiogroup" aria-label="Option restaurant">
+        <button class="btn-choice" type="button" data-resto="oui" role="radio" aria-checked="false">
+          🍷 Évidemment, je ne suis pas venue pour manger des pâtes
+        </button>
+        <button class="btn-choice" type="button" data-resto="non" role="radio" aria-checked="false">
+          🥲 Non merci, garde ton argent
+        </button>
+        <button class="btn-choice" type="button" data-resto="surprise" role="radio" aria-checked="false">
+          🎁 Surprends-moi
+        </button>
+      </div>
+    </div>
+
+    <!-- ================== MESSAGE PERSO ================== -->
+    <div class="message-block">
+      <label for="personal-message" class="label">
+        Une réclamation, une exigence de princesse ou un petit message ?
+      </label>
+      <textarea
+        id="personal-message"
+        rows="3"
+        maxlength="600"
+        placeholder="Je souhaite officiellement signaler que je veux aussi un dessert…"
+      ></textarea>
+    </div>
+
+    <!-- ================== ENVOI ================== -->
+    <div class="submit-block">
+      <button id="submit-btn" class="btn btn-primary btn-lg" type="button">
+        Envoyer mon choix extrêmement important 💌
+      </button>
+      <p id="form-error" class="form-error" hidden></p>
+      <button id="reset-btn" class="btn-link" type="button">Tout recommencer</button>
+    </div>
+  </section>
+
+  <!-- ================== MODALE CONFIRMATION ================== -->
+  <div id="confirm-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content" role="document">
+      <h2 id="confirm-title" class="modal-title">Récapitulatif officiel 📝</h2>
+      <ul class="recap-list">
+        <li><strong>🥇 Choix numéro 1 :</strong> <span id="recap-1"></span></li>
+        <li><strong>🥈 Choix numéro 2 :</strong> <span id="recap-2"></span></li>
+        <li><strong>🥉 Choix numéro 3 :</strong> <span id="recap-3"></span></li>
+        <li id="recap-movie-item" hidden><strong>🎬 Genre de film souhaité :</strong> <span id="recap-movie"></span></li>
+        <li><strong>🍽️ Restaurant :</strong> <span id="recap-resto"></span></li>
+        <li><strong>💌 Message :</strong> <span id="recap-message"></span></li>
+      </ul>
+      <p class="modal-note">
+        Es-tu certaine de vouloir transmettre cette décision officielle ?
+        Toute modification ultérieure devra être négociée autour d’un apéro. 🍸
+      </p>
+      <div class="modal-actions">
+        <button id="confirm-yes" class="btn btn-primary" type="button">Oui, je valide</button>
+        <button id="confirm-no" class="btn btn-ghost" type="button" data-close-modal>Attends, j’hésite encore</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== ÉCRAN CHARGEMENT ================== -->
+  <div id="loading-overlay" class="overlay" hidden aria-live="polite">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Transmission de ta décision au Chef…</p>
+  </div>
+
+  <!-- ================== ÉCRAN SUCCÈS ================== -->
+  <section id="success-screen" class="screen success-screen" hidden aria-labelledby="success-title">
+    <div class="success-inner">
+      <div class="big-heart" aria-hidden="true">❤️</div>
+      <h2 id="success-title" class="title">Choix bien reçu ❤️</h2>
+      <p class="subtitle">
+        Ton dossier a été transmis à l’organisateur officiel.
+        Il va maintenant prétendre qu’il avait déjà tout prévu.
+      </p>
+      <p class="mini-hint">
+        Tu peux désormais retourner à une vie normale en attendant ton activité surprise. ✨
+      </p>
+      <button id="restart-btn" class="btn-link" type="button">Recommencer (juste au cas où)</button>
+    </div>
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
