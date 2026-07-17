@@ -178,6 +178,14 @@ p { margin: 0 0 0.8em; }
   margin-bottom: 0.5em;
   animation: bob 3s ease-in-out infinite;
 }
+.welcome-hello {
+  font-family: 'Quicksand', 'Poppins', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--framboise-dark);
+  margin: 0 0 0.2em;
+  letter-spacing: 0.5px;
+}
 
 /* ==========================================================
    Section headers
