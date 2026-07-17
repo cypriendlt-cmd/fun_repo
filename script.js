@@ -10,9 +10,9 @@
       (ex: https://ton-user.github.io) afin d'éviter
       l'utilisation abusive de ta clé publique.
    ========================================================== */
-const EMAILJS_PUBLIC_KEY = "VOTRE_PUBLIC_KEY";
-const EMAILJS_SERVICE_ID = "VOTRE_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "VOTRE_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "ibeVRoEC4GclrLDRE";
+const EMAILJS_SERVICE_ID = "service_portfoliomgr";
+const EMAILJS_TEMPLATE_ID = "template_k1txblo";
 
 /* ==========================================================
    Données modifiables : les activités proposées
