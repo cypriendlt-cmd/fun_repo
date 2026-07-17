@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(start *)"
+      "Bash(start *)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" status)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" remote -v)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" branch --show-current)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" status --ignored)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" ls-files)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" log --oneline -5)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" diff --stat)",
+      "Bash(git -C \"C:/Users/cyprien.delattre/Documents/fun repo/fun_repo\" diff HEAD -- index.html style.css script.js README.md)",
+      "Bash(git *)"
     ]
   }
 }
